@@ -10,7 +10,7 @@
             type="radio"
             name="user"
             :value="user.id"
-            v-on:change="$emit('input', $event.target.value)"
+            v-on:change="keepValue"
           />
           <label class="modalBox_label" :for="'user-' + user.id">
             {{ user.username }}
@@ -37,6 +37,11 @@
 </template>
 <script>
 export default {
+  data: function () {
+    return {
+      value: "",
+    };
+  },
   props: {
     users: {
       type: Array,
@@ -49,14 +54,19 @@ export default {
     close: function () {
       this.$modal.pop();
     },
+    keepValue: function (e) {
+      this.value = e.target.value;
+      console.log("this.value", this.value);
+    },
     clickSelectButton: function () {
-      this.$emit("click-select-button");
+      this.$emit("click-select-button", this.value);
       this.close();
     },
   },
   mounted: function () {
     // 登録済みの値をセット
     if (this.registeredId) {
+      this.value = this.registeredId;
       const checks = document.querySelectorAll(".js-modalBox_radio-user");
       checks[this.registeredId - 1].checked = true;
     }

@@ -13,8 +13,7 @@
         <ModalUsers
           :users="users"
           :registeredId="selectedId"
-          @input="storeValue($event)"
-          @click-select-button="setSelectedName()"
+          @click-select-button="setSelectedName($event)"
         />
       </modal>
       <p class="editField_value">
@@ -117,11 +116,13 @@ export default {
       });
       return targetObject.username;
     },
-    storeValue: function (value) {
+    // storeValue: function (value) {
+    //   this.temporary.user.id = value;
+    //   this.temporary.user.name = this.getNameFromId("users", value);
+    // },
+    setSelectedName: function (value) {
       this.temporary.user.id = value;
       this.temporary.user.name = this.getNameFromId("users", value);
-    },
-    setSelectedName: function () {
       if (this.temporary.user.id) {
         this.isTemporary = true;
       }
