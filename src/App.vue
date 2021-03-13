@@ -2,12 +2,12 @@
   <div id="app">
     <div class="edit">
       <div class="edit_inner">
-        <h1 class="edit_title">設定画面</h1>
+        <h1 class="edit_title">Vueで様々な編集機能</h1>
         <dl class="edit_list">
           <div class="edit_item">
             <dt class="edit_term">ユーザー選択</dt>
             <dd class="edit_desc">
-              <EditBox />
+              <EditBoxModal />
             </dd>
           </div>
           <div class="edit_item">
@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import EditBox from "./components/EditBox.vue";
+import EditBoxModal from "./components/EditBoxModal.vue";
 
 export default {
   name: "App",
   components: {
-    EditBox,
+    EditBoxModal,
   },
 };
 </script>

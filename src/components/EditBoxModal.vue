@@ -54,7 +54,7 @@
 import ModalUsers from "./ModalUsers.vue";
 
 export default {
-  name: "EditBox",
+  name: "EditBoxModal",
   components: {
     ModalUsers,
   },

@@ -64,8 +64,6 @@ export default {
     },
   },
   mounted: function () {
-    window.hoge = "aa";
-    alert("hey");
     // 登録済みの値をセット
     if (this.registeredId) {
       this.value = this.registeredId;
