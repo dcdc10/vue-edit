@@ -128,6 +128,7 @@ export default {
       const len = this.fileData.length;
       this.fileList = [...Array(len)].map(() => {
         return {
+          value: "",
           fileName: "ファイルを参照してください",
           deleteButton: false,
           src: "",
@@ -136,7 +137,9 @@ export default {
       });
     } else {
       const initialLine = {
+        value: "",
         fileName: "ファイルを参照してください",
+        deleteButton: false,
         src: "",
         alt: "",
       };
@@ -145,6 +148,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .formFile {
   @media (min-width: 768px) {
@@ -209,7 +213,7 @@ export default {
   position: relative;
   width: 48%;
   @media (min-width: 768px) {
-    widht: 30%;
+    width: 30%;
   }
 }
 .formFile_img {
