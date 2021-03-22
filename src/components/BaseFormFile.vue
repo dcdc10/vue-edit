@@ -6,6 +6,7 @@
         <input
           class="formFile_input"
           type="file"
+          ref="fileUp"
           :id="'companyImage-' + index"
           :name="name"
           accept="image/png, image/jpeg"
@@ -68,7 +69,6 @@ export default {
       this.fileList.push(additionalNewLine);
     },
     updateImageDisplay: function (index, event) {
-      console.log("changeイベントが発火しました");
       const files = event.target.files;
 
       if (files.length === 0) {
@@ -91,7 +91,6 @@ export default {
         const self = this;
 
         fileReader.onload = function () {
-          // imageListのindex番目から1つを第３パラに置き換え
           const additional = {
             value: event.target.value,
             fileName: files[0].name,
@@ -102,12 +101,11 @@ export default {
           self.fileList.splice(index, 1, additional);
         };
         fileReader.readAsDataURL(files[0]);
-
-        this.$emit("input", this.fileList);
-        console.log(" this.fileList", this.fileList);
       }
+      this.$emit("input", this.fileList);
     },
     deleteImage: function (index) {
+      this.$refs.fileUp[index].value = "";
       this.fileList.splice(index, 1);
 
       if (!this.fileList.length) {
@@ -121,6 +119,7 @@ export default {
           },
         ];
       }
+      this.$emit("input", this.fileList);
     },
   },
   mounted: function () {

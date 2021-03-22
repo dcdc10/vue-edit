@@ -7,7 +7,7 @@
           <BaseFormFile
             name="image"
             plusButton
-            v-on:input="setChangedId($event, 'image')"
+            v-on:input="setChangedId($event)"
           />
         </div>
         <div class="editField_buttons">
@@ -109,6 +109,15 @@ export default {
     cancel: function () {
       this.isEditing = false;
       // this.temporary.hobby = this.registeredId.hobby;
+    },
+    setChangedId: function (value) {
+      console.log("まんま", value);
+      value.forEach((elem) => {
+        console.log(elem.fileName);
+      });
+      const newArray = value.filter((file) => file.value !== "");
+      this.temporary.image = newArray;
+      console.log("空を削除したあと", this.temporary.image);
     },
   },
   mounted: function () {
