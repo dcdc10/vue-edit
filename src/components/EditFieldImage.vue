@@ -111,7 +111,7 @@ export default {
       // this.temporary.hobby = this.registeredId.hobby;
     },
     setChangedId: function (value) {
-      console.log("まんま", value);
+      console.log("そのまんま", value);
       value.forEach((elem) => {
         console.log(elem.fileName);
       });

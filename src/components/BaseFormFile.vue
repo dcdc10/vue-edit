@@ -85,8 +85,6 @@ export default {
       } else {
         // ファイルが選択された場合の処理
 
-        // fileListのindex番目のfileNameを選択されたファイル名に変更
-
         const fileReader = new FileReader();
         const self = this;
 

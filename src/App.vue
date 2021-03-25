@@ -3,7 +3,7 @@
     <p class="logo">求人サイト hogehoge</p>
     <div class="edit">
       <div class="edit_inner">
-        <h1 class="edit_title">ユーザー編集画面</h1>
+        <h1 class="edit_title">マイページ</h1>
         <dl class="edit_list">
           <div class="edit_item">
             <dt class="edit_term">個人情報</dt>
@@ -42,6 +42,9 @@
         </dl>
         <p class="edit_note">前提</p>
         <ul class="edit_noteList">
+          <li class="edit_noteItem">
+            求人サイトに会員登録したユーザーが登録情報を編集する画面を想定
+          </li>
           <li class="edit_noteItem">バックエンドはlaravelを想定</li>
           <li class="edit_noteItem">
             ユーザーが元々登録している情報はlaravelからpopsで渡すが、今回はベタ書きで対応
@@ -50,14 +53,23 @@
             実際は「更新する」ボタンを押したときにaxiosでlaravelにpostするが今回は省略
           </li>
           <li class="edit_noteItem">
-            laravelから送る登録済みデータも、「更新する」ボタンでpostするデータも、ラジオ、チェックボックス、セレクトボックスについては、valueは文字列ではなくidとする
+            laravelからvueに渡す登録済みデータも、「更新する」ボタンでvueからlaravelにpostするデータも、ラジオ、チェックボックス、セレクトボックスについては、valueは文字列ではなくidとする
           </li>
         </ul>
         <p class="edit_note">レビューしていただきたい箇所</p>
         <ul class="edit_noteList">
-          <li class="edit_noteItem">◎ Vue.js</li>
-          <li class="edit_noteItem">× HTML（マークアップ）</li>
-          <li class="edit_noteItem">× CSS</li>
+          <li class="edit_noteItem">Vue.js（HTMLとCSSはなし）</li>
+          <li class="edit_noteItem">
+            「個人情報」「職務経歴」の2つがレビューいただきたい第一優先。「画像」は時間がありそうだった場合。「希望の職種」は今回はレビュー対象外。
+          </li>
+        </ul>
+        <p class="edit_note">どこに悩んでいるか</p>
+        <ul class="edit_noteList">
+          <li class="edit_noteItem">
+            そもそも全体的な作りに問題はないか（動きは希望通りになっているけどコードのほうはどうか）
+          </li>
+          <li class="edit_noteItem">関数名の付け方</li>
+          <li class="edit_noteItem">関数をどういう単位で分けるか</li>
         </ul>
       </div>
     </div>
