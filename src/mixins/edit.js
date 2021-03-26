@@ -11,10 +11,7 @@ export default {
 				this.temporary[key] = data;
 				this.show[key] = this.temporary[key];
 
-				this.isInitial = false;
 				this.isEditing = false;
-			} else {
-				console.log(`${key}は登録されていません`);
 			}
 		},
 		/**
@@ -28,13 +25,8 @@ export default {
 				// 登録済みの値を表示
 				this.$set(this.initialData[index].temporary, key, data);
 				this.$set(this.initialData[index].show, key, data);
-				// this.temporary[key][index] = data;
-				// this.show[key][index] = this.temporary[key][index];
 
-				this.$set(this.initialData[index], 'isInitial', false);
 				this.$set(this.initialData[index], 'isEditing', false);
-			} else {
-				console.log(`${key}は登録されていません`);
 			}
 		},
 		/**
@@ -48,10 +40,7 @@ export default {
 				this.show[key] = this.getNameById(options, id);
 				this.registeredId[key] = id;
 
-				this.isInitial = false;
 				this.isEditing = false;
-			} else {
-				console.log(`${key}は登録されていません`);
 			}
 		},
 		/**
@@ -63,14 +52,11 @@ export default {
 		 */
 		setRegisteredNotTextArr: function (options, id, key, index) {
 			if (id) {
-				const gettedName = this.getNameById(options, id);
-				this.$set(this.initialData[index].show, key, gettedName);
+				const gotName = this.getNameById(options, id);
+				this.$set(this.initialData[index].show, key, gotName);
 				this.$set(this.initialData[index].registeredId, key, id);
 
-				this.$set(this.initialData[index], 'isInitial', false);
 				this.$set(this.initialData[index], 'isEditing', false);
-			} else {
-				console.log(`${key}は登録されていません`);
 			}
 		},
 		/**
@@ -85,10 +71,7 @@ export default {
 				this.show[key] = this.getNamesByIds(options, ids);
 				this.registeredId[key] = ids;
 
-				this.isInitial = false;
 				this.isEditing = false;
-			} else {
-				console.log(`${key}は登録されていません`);
 			}
 		},
 		/**
@@ -101,14 +84,11 @@ export default {
 		setRegisteredNotTextMultiArr: function (options, ids, key, index) {
 			if (ids[0]) {
 				this.$set(this.initialData[index].temporary, key, ids);
-				const gettedNames = this.getNamesByIds(options, ids);
-				this.$set(this.initialData[index].show, key, gettedNames);
+				const gotNames = this.getNamesByIds(options, ids);
+				this.$set(this.initialData[index].show, key, gotNames);
 				this.$set(this.initialData[index].registeredId, key, ids);
 
-				this.$set(this.initialData[index], 'isInitial', false);
 				this.$set(this.initialData[index], 'isEditing', false);
-			} else {
-				console.log(`${key}は登録されていません`);
 			}
 		},
 		/**
@@ -117,10 +97,7 @@ export default {
 		 */
 		updateText: function (key) {
 			if (this.temporary[key]) {
-				console.log(`temporary${key}に値が入っています`);
 				this.show[key] = this.temporary[key];
-			} else {
-				console.log(`temporary${key}に値は入っていません`);
 			}
 		},
 		/**
@@ -131,9 +108,6 @@ export default {
 		updateTextArr: function (key, index) {
 			if (this.initialData[index].temporary[key]) {
 				this.$set(this.initialData[index].show, key, this.initialData[index].temporary[key]);
-				// this.show[key] = this.temporary[key];
-			} else {
-				console.log(`temporary${key}に値は入っていません`);
 			}
 		},
 		/**
@@ -148,15 +122,12 @@ export default {
 
 				// チェックボックスの場合とそうでない場合
 				if (Array.isArray(id)) {
-					const gettedName = this.getNamesByIds(options, id);
-					this.show[key] = gettedName;
+					const gotName = this.getNamesByIds(options, id);
+					this.show[key] = gotName;
 				} else {
-					const gettedNames = this.getNameById(options, id);
-					this.show[key] = gettedNames;
+					const gotNames = this.getNameById(options, id);
+					this.show[key] = gotNames;
 				}
-
-			} else {
-				console.log(`temporary${key}に値は入っていません`);
 			}
 		},
 		/**
@@ -168,22 +139,16 @@ export default {
 		 */
 		updateNotTextArr: function (options, id, key, index) {
 			if (this.initialData[index].temporary[key]) {
-				console.log('ああああ', this.initialData[index].temporary[key]);
-				// this.registeredId[key] = this.temporary[key];
 				this.$set(this.initialData[index].registeredId, key, this.initialData[index].temporary[key]);
-				console.log('いいいい', this.initialData[index].temporary[key]);
 
 				// チェックボックスの場合とそうでない場合
 				if (Array.isArray(id)) {
-					const gettedNames = this.getNamesByIds(options, id);
-					this.$set(this.initialData[index].show, key, gettedNames);
+					const gotNames = this.getNamesByIds(options, id);
+					this.$set(this.initialData[index].show, key, gotNames);
 				} else {
-					const gettedName = this.getNameById(options, id);
-					this.$set(this.initialData[index].show, key, gettedName);
+					const gotName = this.getNameById(options, id);
+					this.$set(this.initialData[index].show, key, gotName);
 				}
-
-			} else {
-				console.log(`temporary${key}に値は入っていません`);
 			}
 		},
 		/**
@@ -205,10 +170,6 @@ export default {
 		 * @return {Array} それぞれのidに紐づくname
 		 */
 		getNamesByIds: function (options, ids) {
-
-			console.log('options', options);
-			console.log('ids', ids);
-
 			let targetNames = []
 
 			ids.forEach(elem => {
@@ -217,7 +178,6 @@ export default {
 				});
 				targetNames.push(targetObject.name)
 			});
-
 			return targetNames.join(', ')
 		},
 		/**
@@ -282,31 +242,17 @@ export default {
 			this.$set(this.initialData[index].temporary[item], 'id', value);
 
 			if (Array.isArray(value)) {
-				const gettedNames = this.getNamesByIds(options, value)
-				this.$set(this.initialData[index].temporary[item], 'name', gettedNames);
+				const gotNames = this.getNamesByIds(options, value)
+				this.$set(this.initialData[index].temporary[item], 'name', gotNames);
 			} else {
-				const gettedName = this.getNameById(options, value)
+				const gotName = this.getNameById(options, value)
 
-				this.$set(this.initialData[index].temporary[item], 'name', gettedName);
+				this.$set(this.initialData[index].temporary[item], 'name', gotName);
 			}
 
 			if (this.initialData[index].temporary[item].id) {
 				this.$set(this.initialData[index].isTemporary, item, true);
-				// this.isTemporary[item][index] = true;
 			}
 		},
-		/**
-		 * EditField（複数）で使用します。
-		 */
-		// addForm: function () {
-		//     this.initialData.push(additionalForm);
-		// },
-		/**
-		 * EditField（複数）で使用します。
-		 * @param {Number} index フォームリストのインデックス
-		 */
-		// deleteForm: function (index) {
-		//     this.initialData.splice(index, 1);
-		// },
 	},
 };

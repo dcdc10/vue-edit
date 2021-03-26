@@ -224,7 +224,6 @@ export default {
       type: Array,
     },
   },
-  computed: {},
   methods: {
     update: function () {
       // それぞれの値を更新
